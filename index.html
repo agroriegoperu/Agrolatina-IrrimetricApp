@@ -8,8 +8,6 @@
   <!-- Logo del cliente: pestaña del navegador e ícono al "Agregar a pantalla de inicio" -->
   <link rel="icon" type="image/png" href="logo-agrolatina.png">
   <link rel="apple-touch-icon" href="logo-agrolatina.png">
-  <link rel="manifest" href="manifest.json">
-  <link rel="apple-touch-icon" href="icon-192.png">
   <meta name="theme-color" content="#ffffff">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="mobile-web-app-capable" content="yes">
@@ -17,8 +15,13 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="default">
 
   <style>
-    html, body { margin: 0; height: 100%; background: #f3f5f8; font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
-    iframe { display: block; width: 100%; height: 100vh; height: 100dvh; border: 0; }
+    html, body { margin: 0; height: 100%; background: #ffffff; font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; overflow: hidden; }
+    /* La app empieza debajo de la barra de estado / zona del notch: así el difuminado de iOS
+       queda sobre una franja blanca y no sobre el contenido. */
+    body { padding-top: env(safe-area-inset-top); box-sizing: border-box; }
+    iframe { display: block; width: 100%; border: 0;
+             height: calc(100vh - env(safe-area-inset-top));
+             height: calc(100dvh - env(safe-area-inset-top)); }
 
     /* Pantalla de carga con el logo del cliente */
     #splash {
