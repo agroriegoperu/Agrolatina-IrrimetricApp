@@ -9,6 +9,7 @@
   <link rel="icon" type="image/png" href="logo-agrolatina.png">
   <link rel="apple-touch-icon" href="logo-agrolatina.png">
   <meta name="theme-color" content="#ffffff">
+  <link rel="manifest" href="manifest.json">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-title" content="Irrimetric">
@@ -54,6 +55,9 @@
     app.addEventListener('load', function () { setTimeout(ocultar, 400); });
     setTimeout(ocultar, 15000); // por si la carga tarda demasiado
     app.src = URL_APP + location.search;
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('sw.js');
+    }
   </script>
 </body>
 </html>
